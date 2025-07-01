@@ -10,7 +10,7 @@ import LiveSwitcher from 'compositions/LiveSwitcher/LiveSwitcher'
 const LeftSidebar: React.FC = () => {
   return (
     <div className="h-full">
-      <div className="px-4  sticky top-0 flex items-center justify-between ">
+      <div className="px-4 py-2 sticky top-0 flex items-center justify-between ">
         <Logo className="h-full" />
         {/* <button className="text-grey-60 hover:text-grey-90 transition" onClick={() => openModal('SearchModal')}>
           <Icon className="size-5" name="interface/search" />

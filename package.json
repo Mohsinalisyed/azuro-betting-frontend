@@ -6,7 +6,8 @@
   },
   "private": true,
   "scripts": {
-    "dev": "concurrently \"npm run watch-icons\" \"next dev\"",
+    "dev": "next dev",
+    "dev:all": "concurrently \"npm run watch-icons\" \"next dev\"",
     "build": "npm run build-icons && next build",
     "start": "next start",
     "lint": "next lint && tsc --noEmit",
