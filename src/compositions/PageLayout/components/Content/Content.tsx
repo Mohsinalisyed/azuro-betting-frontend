@@ -36,7 +36,7 @@ const Content: React.CFC = ({ children }) => {
         <Media wide>
           <Search />
         </Media>
-        <div className="flex flex-col bg-bg-l1 border border-grey-10 wd:rounded-l-md -wd:rounded-t-md px-2 min-h-[calc(100vh_-_4.5rem)] mr-2">
+        <div className="flex flex-col bg-bg-l1 border border-grey-10  px-2 min-h-[calc(100vh_-_4.5rem)] mr-2">
           {children}
         </div>
       </main>

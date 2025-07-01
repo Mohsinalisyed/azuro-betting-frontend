@@ -28,7 +28,7 @@ const Content: React.FC = () => {
           return (
             <Menu.Item key={value}>
               <button className={oddClassName} onClick={() => setOddsView(value as OddsView)}>
-                <Message className="text-caption-13 font-medium" value={title} />
+                <Message className="text-caption-13 font-medium hover:text-primary" value={title} />
               </button>
             </Menu.Item>
           )
@@ -46,7 +46,7 @@ const ChangeOddsView: React.FC = () => {
       placement="bottomRight"
     >
       <div>
-        <Icon className="size-5 text-grey-60 hover:text-grey-90" name="interface/settings" />
+        <Icon className="size-5 text-grey-60 hover:text-primary" name="interface/settings" />
       </div>
     </Dropdown>
   )

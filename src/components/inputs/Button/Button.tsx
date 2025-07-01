@@ -52,7 +52,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonProps>((p
       'text-caption-14 h-10 px-4': size === 40,
       'text-caption-13 h-8 px-3': size === 32,
       // primary
-      'border-primary bg-primary text-grey-90': style === 'primary',
+      'border-primary bg-wallet-connect-gradient text-grey-90': style === 'primary',
       'hover:bg-primary-hover hover:text-white hover:border-primary-hover': style === 'primary',
       'disabled:text-grey-70 disabled:bg-bg-l1 disabled:border-grey-10': style === 'primary' || style === 'secondary',
       // secondary

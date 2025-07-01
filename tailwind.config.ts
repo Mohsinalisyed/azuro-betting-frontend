@@ -69,7 +69,7 @@ const config: Config = {
       },
       backgroundImage: ({ theme }) => ({
         'card-border-top': 'linear-gradient(180deg, rgba(239, 239, 243, 0.15) 0%, rgba(239, 239, 243, 0) 100%)',
-        'card-border-bottom': 'linear-gradient(180deg, rgba(239, 239, 243, 0) 0%, rgba(239, 239, 243, 0.15) 100%)',
+        'card-border-bottom': 'linear-gradient(180deg, rgba(239, 239, 243, 0) 0%, rgba(29, 174, 255, 0.15) 100%)',
         'live-switcher-bg': 'linear-gradient(90deg, rgba(61, 32, 31, 0.5) 0%, rgba(61, 32, 31, 0) 100%)',
         'betslip-item-bg': `linear-gradient(90.08deg, ${theme('colors.bg-l2')} 0.06%, ${theme('colors.brand-10')} 300%)`,
         'betslip-item-bg-inc': `linear-gradient(90.08deg, ${theme('colors.bg-l2')} 0.06%, ${theme('colors.accent-green')} 300%)`,
@@ -81,7 +81,8 @@ const config: Config = {
         'bet-game-won': `linear-gradient(180deg, ${theme('colors.bg-l3')} 0%, ${theme('colors.accent-green')} 1000%)`,
         'bet-game-lost': `linear-gradient(180deg, ${theme('colors.bg-l3')} 0%, ${theme('colors.accent-red')} 1000%)`,
         'live-event-gradient': `linear-gradient(90deg, transparent 0%, ${theme('colors.accent-red')} 50%, transparent 100%)`,
-       'sidebar-active-gradient': 'linear-gradient(180deg, #4DC4FF1A 0%, rgba(29, 174, 255, 0.00) 40%, rgba(77, 196, 255, 0.1) 60%, rgba(77, 196, 255, 0.2) 80%, rgba(77, 196, 255, 0.3) 100%)'
+       'sidebar-active-gradient': 'linear-gradient(180deg, #4DC4FF1A 0%, rgba(29, 174, 255, 0.00) 40%, rgba(77, 196, 255, 0.1) 60%, rgba(77, 196, 255, 0.2) 80%, rgba(77, 196, 255, 0.3) 100%)',
+       'wallet-connect-gradient': 'linear-gradient(90deg, #1592D4 0%, rgba(77, 196, 255, 0.5) 40%, rgba(77, 196, 255, 0.6) 60%, rgba(77, 196, 255, 0.7) 80%, rgba(77, 196, 255, 0.8) 100%)'
 
       }),
       boxShadow: ({ theme }) => ({
