@@ -84,8 +84,8 @@ const Card: React.FC<CardProps> = ({ game }) => {
   })
 
   return (
-    <div className="bg-card-border-bottom p-px rounded-md overflow-hidden">
-      <div className="p-4 bg-grey-10 rounded-md">
+    <div className="bg-card-border-bottom p-px rounded-md overflow-hidden ">
+      <div className="p-4 bg-card-border-bottom rounded-md">
         <Href to={`${sportSlug}/${countrySlug}/${leagueSlug}/${gameId}`} className="flex items-center justify-center text-grey-60 text-caption-13 hover:underline">
           <Icon className="size-4 mr-2 flex-none" name={`sport/${sportSlug}` as IconName} />
           <span className="text-ellipsis whitespace-nowrap overflow-hidden">{countryName}</span>

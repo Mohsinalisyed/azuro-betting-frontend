@@ -68,8 +68,8 @@ const config: Config = {
         'lg': '1.25rem', // 20
       },
       backgroundImage: ({ theme }) => ({
-        'card-border-top': 'linear-gradient(180deg, rgba(239, 239, 243, 0.15) 0%, rgba(239, 239, 243, 0) 100%)',
-        'card-border-bottom': 'linear-gradient(180deg, rgba(239, 239, 243, 0) 0%, rgba(29, 174, 255, 0.15) 100%)',
+        'card-border-top': 'linear-gradient(180deg, rgba(239, 239, 243, 0.15) 0%, rgba(77, 196, 255, 0.1)  100%)',
+        'card-border-bottom': 'linear-gradient(180deg, rgba(77, 196, 255, 0.1)  0%, rgba(29, 174, 255, 0.15) 100%)',
         'live-switcher-bg': 'linear-gradient(90deg, rgba(61, 32, 31, 0.5) 0%, rgba(61, 32, 31, 0) 100%)',
         'betslip-item-bg': `linear-gradient(90.08deg, ${theme('colors.bg-l2')} 0.06%, ${theme('colors.brand-10')} 300%)`,
         'betslip-item-bg-inc': `linear-gradient(90.08deg, ${theme('colors.bg-l2')} 0.06%, ${theme('colors.accent-green')} 300%)`,
@@ -87,6 +87,7 @@ const config: Config = {
       }),
       boxShadow: ({ theme }) => ({
         'betslip': `0px -10px 30px ${theme('colors.bg-l1')}`,
+        'card': '0 2px 16px 0 rgba(29, 174, 255, 0.10), 0 1.5px 4px 0 rgba(0,0,0,0.15)', // soft blue and black shadow
       }),
       fill: {
         'gradient-azuro-waves-grey': '#c4cfe4',
