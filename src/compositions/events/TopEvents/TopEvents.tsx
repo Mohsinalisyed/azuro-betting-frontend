@@ -201,7 +201,7 @@ const TopEvents: React.FC = () => {
       <div className="px-4">
         <Message className="text-caption-13 text-grey-60 uppercase" value={messages.title} />
         <h1 className="text-heading-h1 font-bold">
-          <Message className="text-brand-50" value={messages.top} />
+          <Message className="text-primary" value={messages.top} />
           {
             Boolean(sport) && (
               <Message className="ml-2" value={sport} />

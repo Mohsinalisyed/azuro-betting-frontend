@@ -37,7 +37,7 @@ const Desktop = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
               return children({ isOpened: open })
             }
 
-            const controlClassName = cx('hover:text-grey-90 inline-flex items-center', open ? 'text-grey-90' : 'text-gray-60')
+            const controlClassName = cx('hover:text-primary inline-flex items-center', open ? 'text-grey-90' : 'text-gray-60')
 
             return (
               <div className={controlClassName}>

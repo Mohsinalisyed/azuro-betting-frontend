@@ -22,43 +22,43 @@ const config: Config = {
     },
     extend: {
       colors: {
+        'bg-l0': '#10141A', // main background (almost black)
+        'bg-l1': '#181E25', // sidebar/panels
+        'bg-l2': '#232B36', // cards
+        'bg-l3': '#232B36', // modals/overlays
+
+        'grey-90': '#FFFFFF', // main text (white)
+        'grey-70': '#B0B8C1', // secondary text
+        'grey-60': '#ffffff', // muted text
+        'grey-40': '#4B5563', // borders/dividers
+        'grey-20': '#232B36', // subtle backgrounds
+        'grey-15': '#181E25',
+        'grey-10': '#10141A',
+
+        'primary': '#1DAEFF', // bright blue for buttons, highlights
+        'primary-hover': '#1592D4',
+        'primary-dark': '#0D6BA8',
+
+        'accent-green': '#3EFF8B',
+        'accent-yellow': '#1592D4',
+        'accent-red': '#F42E52',
+        'accent-blue': '#1DAEFF',
+        'accent-purple': '#CA5AFF',
+
         'brand-70': '#B84200',
-        'brand-60': '#E66001',
-        'brand-50': '#FF6B00',
+        'brand-60': '#1592D4',
+        'brand-50': '#1592D4',
         'brand-15': '#3A2B20',
         'brand-10': '#642900',
-        'brand-5': '#331500',
-
-        'grey-90': '#EBEBEB',
-        'grey-70': '#ADADAD',
-        'grey-60': '#999999',
-        'grey-40': '#7E7E7E',
-        'grey-20': '#3B3B3B',
-        'grey-15': '#2E2E2E',
-        'grey-10': '#1F1F1F',
-
-        'bg-l0': '#111111',
-        'bg-l1': '#171717',
-        'bg-l2': '#242424',
-        'bg-l3': '#2E2E2E',
+        'brand-5': '#4DC4FF1A',
 
         'accent-pink': '#F768A0',
         'accent-pink-5': '#442E37',
-
-        'accent-green': '#3EFF8B',
         'accent-green-5': '#122018',
         'accent-green-10': '#134C2A',
-
-        'accent-yellow': '#EFB72A',
         'accent-yellow-10': '#E5B02B1A',
-
-        'accent-red': '#F42E52',
         'accent-red-5': '#3D1F24',
         'accent-red-10': '#632C2A',
-
-        'accent-blue': '#7B58ED',
-
-        'accent-purple': '#CA5AFF',
       },
       borderRadius: {
         'ssm': '0.375rem', // 6
@@ -81,6 +81,8 @@ const config: Config = {
         'bet-game-won': `linear-gradient(180deg, ${theme('colors.bg-l3')} 0%, ${theme('colors.accent-green')} 1000%)`,
         'bet-game-lost': `linear-gradient(180deg, ${theme('colors.bg-l3')} 0%, ${theme('colors.accent-red')} 1000%)`,
         'live-event-gradient': `linear-gradient(90deg, transparent 0%, ${theme('colors.accent-red')} 50%, transparent 100%)`,
+       'sidebar-active-gradient': 'linear-gradient(180deg, #4DC4FF1A 0%, rgba(29, 174, 255, 0.00) 40%, rgba(77, 196, 255, 0.1) 60%, rgba(77, 196, 255, 0.2) 80%, rgba(77, 196, 255, 0.3) 100%)'
+
       }),
       boxShadow: ({ theme }) => ({
         'betslip': `0px -10px 30px ${theme('colors.bg-l1')}`,

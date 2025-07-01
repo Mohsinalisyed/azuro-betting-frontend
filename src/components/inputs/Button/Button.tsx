@@ -52,15 +52,15 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonProps>((p
       'text-caption-14 h-10 px-4': size === 40,
       'text-caption-13 h-8 px-3': size === 32,
       // primary
-      'border-white/20 bg-brand-50 text-grey-90': style === 'primary',
-      'hover:text-black hover:bg-white hover:border-white': style === 'primary',
-      'disabled:text-grey-20 disabled:bg-bg-l1 disabled:border-grey-10': style === 'primary' || style === 'secondary',
+      'border-primary bg-primary text-grey-90': style === 'primary',
+      'hover:bg-primary-hover hover:text-white hover:border-primary-hover': style === 'primary',
+      'disabled:text-grey-70 disabled:bg-bg-l1 disabled:border-grey-10': style === 'primary' || style === 'secondary',
       // secondary
-      'border-white/20 bg-grey-20 text-grey-90': style === 'secondary',
-      'hover:text-black hover:bg-grey-90 hover:border-grey-90': style === 'secondary',
+      'border-grey-40 bg-bg-l2 text-grey-90': style === 'secondary',
+      'hover:bg-grey-40 hover:text-white hover:border-grey-70': style === 'secondary',
       // tertiary
-      'border-grey-15 bg-transparent text-grey-60': style === 'tertiary',
-      'hover:text-brand-60': style === 'tertiary',
+      'border-grey-40 bg-transparent text-grey-60': style === 'tertiary',
+      'hover:text-primary': style === 'tertiary',
       'disabled:text-grey-20': style === 'tertiary',
     }
   )

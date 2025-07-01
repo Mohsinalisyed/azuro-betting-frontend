@@ -26,7 +26,7 @@ const TabbedBetslip: React.FC = () => {
               <button
                 key={tab}
                 className={
-                  cx('w-full p-2 text-center rounded-sm', {
+                  cx('w-full p-2 text-center rounded-sm hover:bg-brand-5', {
                     'text-grey-60 hover:text-grey-90': !isActive,
                     'text-grey-90 bg-grey-10': isActive,
                   })

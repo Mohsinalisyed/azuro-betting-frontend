@@ -126,8 +126,8 @@ const TimeFilter: React.FC<TimeFilterProps> = ({ className }) => {
           const isActive = value === filterByTime
 
           const className = cx('px-2 text-caption-14 font-medium', {
-            'text-grey-60 hover:text-grey-90 transition': !isActive,
-            'text-grey-90': isActive,
+            'text-grey-60 hover:text-accent-blue transition': !isActive,
+            'text-accent-blue': isActive,
           })
 
           return (

@@ -31,9 +31,9 @@ const Switch = () => {
 const LiveSwitcher: React.FC<{className?: string}> = ({ className }) => {
   return (
     <div className={cx('border border-accent-red-5 rounded-md bg-live-switcher-bg py-2 pl-4 pr-2 flex items-center justify-between', className)}>
-      <div className="flex items-center text-accent-red">
+      <div className="flex items-center text-blue-500">
         <Icon className="size-4 mr-2" name="interface/live" />
-        <Message className="text-caption-12 font-medium" value={messages.title} />
+        <Message className="text-caption-12 font-medium text-blue-500 " value={messages.title} />
       </div>
       <Switch />
     </div>

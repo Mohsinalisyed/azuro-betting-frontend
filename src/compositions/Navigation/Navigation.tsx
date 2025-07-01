@@ -42,7 +42,7 @@ const League: React.FC<LeagueProps> = (props) => {
 
   return (
     <Href to={url} className={rootClassName}>
-      <div className="flex items-center overflow-hidden">
+      <div className="flex items-center overflow-hidden hover:text-primary">
         <Flag className="mr-2 flex-none" country={country.slug} />
         <div className="text-caption-13 text-ellipsis whitespace-nowrap overflow-hidden">{name}</div>
       </div>
@@ -192,7 +192,7 @@ const Navigation: React.FC<NavigationProps> = ({ className }) => {
 
   return (
     <div className={className}>
-      <Message className="text-caption-13 font-semibold py-2 px-4 mb-2" value={messages.title} tag="p" />
+      <Message className="text-caption-14 font-semibold py-2 px-4 mb-2" value={messages.title} tag="p" />
       <Sport slug="/" name={messages.top} gamesCount={allTopGames} />
       {
         sortedSports?.map(sport => {

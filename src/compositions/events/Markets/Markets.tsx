@@ -125,7 +125,7 @@ const Content: React.FC<ContentProps> = ({ markets, game }) => {
     'group border border-grey-20 text-gray-70 ml-2 mt-5 sticky top-5',
     'disabled:cursor-not-allowed disabled:text-grey-40 disabled:border-grey-10',
     {
-      'hover:text-grey-90 hover:border-grey-40': !isDisabled,
+      'hover:text-primary hover:border-brand-5': !isDisabled,
     }
   )
 
