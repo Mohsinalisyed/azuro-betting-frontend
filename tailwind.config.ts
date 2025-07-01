@@ -41,7 +41,7 @@ const config: Config = {
 
         'accent-green': '#3EFF8B',
         'accent-yellow': '#1592D4',
-        'accent-red': '#F42E52',
+        'accent-red': '#1592D4',
         'accent-blue': '#1DAEFF',
         'accent-purple': '#CA5AFF',
 
@@ -52,7 +52,7 @@ const config: Config = {
         'brand-10': '#642900',
         'brand-5': '#4DC4FF1A',
 
-        'accent-pink': '#F768A0',
+        'accent-pink': '#1592D4',
         'accent-pink-5': '#442E37',
         'accent-green-5': '#122018',
         'accent-green-10': '#134C2A',
@@ -87,7 +87,7 @@ const config: Config = {
       }),
       boxShadow: ({ theme }) => ({
         'betslip': `0px -10px 30px ${theme('colors.bg-l1')}`,
-        'card': '0 2px 16px 0 rgba(29, 174, 255, 0.10), 0 1.5px 4px 0 rgba(0,0,0,0.15)', // soft blue and black shadow
+        'searchInput': 'box-shadow: rgba(77, 196, 255, 0.5) 0px 2px 4px 0px, rgba(77, 196, 255, 0.4) 0px 2px 16px 0px', // soft blue and black shadow
       }),
       fill: {
         'gradient-azuro-waves-grey': '#c4cfe4',
