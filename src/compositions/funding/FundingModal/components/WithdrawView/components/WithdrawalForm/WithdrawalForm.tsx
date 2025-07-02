@@ -25,7 +25,7 @@ const WithdrawalForm: React.FC<{ className?: string }> = ({ className }) => {
     <FormComponent
       className={className}
       loading={isSubmitting}
-      onSubmit={submit}
+      onSubmit={() => void submit()}
     >
       <Message
         className="text-caption-13 mb-1"

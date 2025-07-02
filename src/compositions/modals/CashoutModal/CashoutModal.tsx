@@ -135,7 +135,7 @@ const CashoutModal: ModalComponent<CashoutModalProps> = (props) => {
             size={40}
             loading={isLoading}
             disabled={isOver || !isCashoutAvailable}
-            onClick={submit}
+            onClick={() => void submit()}
           />
         </div>
         <div className="mt-3 text-center">
@@ -148,7 +148,7 @@ const CashoutModal: ModalComponent<CashoutModalProps> = (props) => {
                   title={messages.request}
                   style="tertiary"
                   size={32}
-                  onClick={() => refetch()}
+                  onClick={() => void refetch()}
                 />
               </div>
             ) : (

@@ -39,7 +39,7 @@ const SwitchNetworkModal: ModalComponent<SwitchNetworkModalProps> = (props) => {
     if (error && /Missing or invalid/i.test(error.message)) {
       (async () => {
         try {
-          const chain = chains.find(({ id }) => id === chainId)
+          const chain = [ ...chains ].find(({ id }) => id === chainId)
 
           if (!walletClient?.data || !chain) {
             throw new Error('Wallet client or chain not found')

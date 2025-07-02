@@ -1,4 +1,4 @@
-import { Kind, type DocumentNode, print } from 'graphql'
+import { Kind, type DocumentNode, print, type OperationDefinitionNode } from 'graphql'
 
 
 const extractOperationName = (document: DocumentNode): string | undefined => {
@@ -12,7 +12,8 @@ const extractOperationName = (document: DocumentNode): string | undefined => {
   ))
 
   if (defs.length === 1) {
-    operationName = defs[0]!.name?.value
+    const opDef = defs[0] as OperationDefinitionNode
+    operationName = opDef.name?.value
   }
 
   return operationName

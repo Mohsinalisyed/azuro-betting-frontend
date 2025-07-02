@@ -99,7 +99,11 @@ const BetButton: React.FC<BetButtonProps> = ({ isEnoughBalance, isBalanceFetchin
   })
 
   return (
-    <button className={rootClassName} onClick={submit} disabled={isDisabled}>
+    <button
+      className={rootClassName}
+      onClick={() => void submit()}
+      disabled={isDisabled}
+    >
       <div className="w-full text-center px-1">
         {
           isLoading ? (

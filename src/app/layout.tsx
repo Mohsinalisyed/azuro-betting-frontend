@@ -20,7 +20,7 @@ dayjs.extend(duration)
 const inter = Inter({ subsets: [ 'latin' ] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(constants.baseUrl),
+  metadataBase: new URL(constants.baseUrl || 'http://localhost:3000'),
   title: 'Liberland Casino',
   description: '',
 }
@@ -39,7 +39,7 @@ export default async function RootLayout({
   const initialLiveState = JSON.parse(cookieStore.get('live')?.value || 'false')
 
   const initialChainId = _initialChainId &&
-                  (appChains.find(chain => chain.id === +_initialChainId)?.id as ChainId) || constants.defaultChain.id
+    ((appChains as unknown as Array<{ id: number }>).find(chain => chain.id === +_initialChainId)?.id as ChainId) || constants.defaultChain.id
 
   return (
     <html lang="en">

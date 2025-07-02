@@ -29,7 +29,6 @@ const Form: React.CFC<FormProps> = (props) => {
     <form
       {...rest}
       action={action}
-      aria-disabled={disabled}
       aria-busy={loading}
       noValidate
       onSubmit={handleSubmit}

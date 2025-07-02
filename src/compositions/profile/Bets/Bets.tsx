@@ -338,7 +338,7 @@ const Bet: React.FC<BetProps> = ({ bet }) => {
                   title={isWin ? messages.redeem : messages.refund}
                   size={32}
                   loading={isLoading}
-                  onClick={handleRedeem}
+                  onClick={() => void handleRedeem()}
                 />
               </ConnectButtonWrapper>
             )
@@ -475,7 +475,7 @@ const BetsPages: React.FC<BetsPagesProps> = (props) => {
           )
         }
       </div>
-      {Boolean(pages && !isPlaceholderData) && <FetchMore fetch={fetchNextPage} skip={!hasNextPage} />}
+      {Boolean(pages && !isPlaceholderData) && <FetchMore fetch={() => void fetchNextPage()} skip={!hasNextPage} />}
     </>
   )
 }

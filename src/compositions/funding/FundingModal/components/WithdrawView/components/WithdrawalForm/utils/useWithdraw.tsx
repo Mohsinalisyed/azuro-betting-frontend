@@ -107,7 +107,9 @@ const useWithdraw = () => {
         buttonProps: {
           title: buttonMessages.continue,
           style: 'primary',
-          onClick: () => confirmSubmit(address, amount),
+          onClick: () => {
+            void confirmSubmit(address, amount)
+          },
         },
         onClose,
       })

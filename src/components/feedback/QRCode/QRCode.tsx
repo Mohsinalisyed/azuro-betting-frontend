@@ -2,11 +2,11 @@ import QRCodeUtil from 'qrcode'
 import React, { type ReactElement } from 'react'
 
 
-const generateMatrix = (value: string, errorCorrectionLevel: QRCodeUtil.QRCodeErrorCorrectionLevel) => {
+const generateMatrix = (value: string, errorCorrectionLevel: QRCodeUtil.QRCodeErrorCorrectionLevel): QRCodeUtil.QRCode[][] => {
   const arr = Array.prototype.slice.call(QRCodeUtil.create(value, { errorCorrectionLevel }).modules.data, 0)
   const sqrt = Math.sqrt(arr.length)
 
-  return arr.reduce((rows, key, index) => {
+  return arr.reduce((rows: QRCodeUtil.QRCode[][], key, index) => {
     if (index % sqrt === 0) {
       rows.push([ key ])
     }
