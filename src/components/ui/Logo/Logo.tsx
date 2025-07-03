@@ -11,13 +11,13 @@ const Logo: React.FC<LogoProps> = (props) => {
   const { className } = props
 
   return (
-    <Href to="/" className={cx('flex items-center', className)}>
+    <Href to="/" className={cx('flex items-center h-full', className)}>
       <img
         className="rounded-full"
         src="/images/icons/logo/logo.png"
         alt="Logo"
-        width={70}
-        height={70}
+        width={90}
+        height={90}
       />
     </Href>
   )

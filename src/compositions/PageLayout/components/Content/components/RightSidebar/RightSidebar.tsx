@@ -17,7 +17,7 @@ const RightSidebar: React.FC = () => {
 
   return (
     <>
-      <div className="px-6 py-3 sticky top-0 z-20">
+      <div className="px-6  sticky top-0 z-20 h-[80px] flex items-center">
         {
           Boolean(account) ? (
             <Controls className="ml-auto" />
@@ -33,7 +33,7 @@ const RightSidebar: React.FC = () => {
         }
       </div>
       <div
-        className="bg-bg-l1 border border-grey-10 rounded-r-md -ml-px overflow-auto wd:h-[calc(100vh_-_4.5rem)] no-scrollbar p-2 space-y-2 bg-sidebar-active-gradient"
+        className="bg-bg-l1 border border-grey-10 rounded-r-md -ml-px overflow-auto wd:h-[calc(100vh_-_5.5rem)]  no-scrollbar p-2 space-y-2 bg-sidebar-active-gradient"
       >
         <LiveStatistics withBottomLine />
         <TabbedBetslip />
