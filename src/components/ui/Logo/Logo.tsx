@@ -16,8 +16,8 @@ const Logo: React.FC<LogoProps> = (props) => {
         className="rounded-full"
         src="/images/icons/logo/logo.png"
         alt="Logo"
-        width={90}
-        height={90}
+        width={60}
+        height={60}
       />
     </Href>
   )
