@@ -87,7 +87,7 @@ const config: Config = {
       }),
       boxShadow: ({ theme }) => ({
         'betslip': `0px -10px 30px ${theme('colors.bg-l1')}`,
-        'searchInput': 'box-shadow: rgba(77, 196, 255, 0.5) 0px 2px 4px 0px, rgba(77, 196, 255, 0.4) 0px 2px 16px 0px', // soft blue and black shadow
+        'searchInput': 'rgba(0, 0, 0, 0.35) 0px 5px 15px', // soft blue and black shadow
       }),
       fill: {
         'gradient-azuro-waves-grey': '#c4cfe4',
