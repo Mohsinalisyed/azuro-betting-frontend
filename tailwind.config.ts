@@ -81,8 +81,8 @@ const config: Config = {
         'bet-game-won': `linear-gradient(180deg, ${theme('colors.bg-l3')} 0%, ${theme('colors.accent-green')} 1000%)`,
         'bet-game-lost': `linear-gradient(180deg, ${theme('colors.bg-l3')} 0%, ${theme('colors.accent-red')} 1000%)`,
         'live-event-gradient': `linear-gradient(90deg, transparent 0%, ${theme('colors.accent-red')} 50%, transparent 100%)`,
-       'sidebar-active-gradient': 'linear-gradient(180deg, #4DC4FF1A 0%, rgba(29, 174, 255, 0.00) 40%, rgba(77, 196, 255, 0.1) 60%, rgba(77, 196, 255, 0.2) 80%, rgba(77, 196, 255, 0.3) 100%)',
-       'wallet-connect-gradient': 'linear-gradient(90deg, #1592D4 0%, rgba(77, 196, 255, 0.5) 40%, rgba(77, 196, 255, 0.6) 60%, rgba(77, 196, 255, 0.7) 80%, rgba(77, 196, 255, 0.8) 100%)'
+        'sidebar-active-gradient': 'linear-gradient(180deg, #4DC4FF1A 0%, rgba(29, 174, 255, 0.00) 40%, rgba(77, 196, 255, 0.1) 60%, rgba(77, 196, 255, 0.2) 80%, rgba(77, 196, 255, 0.3) 100%)',
+        'wallet-connect-gradient': 'linear-gradient(90deg, #1592D4 0%, rgba(77, 196, 255, 0.5) 40%, rgba(77, 196, 255, 0.6) 60%, rgba(77, 196, 255, 0.7) 80%, rgba(77, 196, 255, 0.8) 100%)',
 
       }),
       boxShadow: ({ theme }) => ({
@@ -101,7 +101,7 @@ const config: Config = {
         'gradient-azuro-waves-royal': 'url(#gradient-azuro-waves-royal)',
       },
       fontFamily: {
-        sans: ['Roboto', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: [ 'Roboto', 'ui-sans-serif', 'system-ui', 'sans-serif' ],
       },
     },
   },

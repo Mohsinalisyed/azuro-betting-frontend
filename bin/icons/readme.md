@@ -1,6 +1,8 @@
 ---
 Icons bundle generator
 ---
+Linting
+npx eslint . --fix
 
 Default NextJs import generates object for svg: `{ src: string, width: number, height: number }`
 
