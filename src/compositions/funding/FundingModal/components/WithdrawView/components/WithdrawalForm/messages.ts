@@ -27,3 +27,4 @@ export default {
     en: 'Only send to a {symbol} address on the {chain} network',
     fr: 'Envoyez uniquement à une adresse {symbol} sur le réseau {chain}',
   },
+}
