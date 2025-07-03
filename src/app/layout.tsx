@@ -18,7 +18,7 @@ dayjs.extend(utc)
 dayjs.extend(duration)
 
 const inter = Inter({ subsets: [ 'latin' ] })
-const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'], display: 'swap' })
+const roboto = Roboto({ subsets: [ 'latin' ], weight: [ '400', '500', '700' ], display: 'swap' })
 
 export const metadata: Metadata = {
   metadataBase: new URL(constants.baseUrl || 'http://localhost:3000'),

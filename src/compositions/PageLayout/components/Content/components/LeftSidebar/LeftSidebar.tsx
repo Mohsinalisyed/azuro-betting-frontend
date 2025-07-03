@@ -16,7 +16,7 @@ const LeftSidebar: React.FC = () => {
           <Icon className="size-5" name="interface/search" />
         </button> */}
       </div>
-      <div className="p-4 rounded-l-md overflow-auto wd:h-[calc(100vh_-_4rem)] no-scrollbar bg-sidebar-active-gradient">
+      <div className="p-2 rounded-l-md overflow-auto wd:h-[calc(100vh_-_4rem)] no-scrollbar bg-sidebar-active-gradient">
         <LiveSwitcher />
         <Navigation className="mt-2" />
       </div>

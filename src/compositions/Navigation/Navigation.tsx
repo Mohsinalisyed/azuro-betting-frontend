@@ -186,24 +186,49 @@ const Navigation: React.FC<NavigationProps> = ({ className }) => {
     })
   }, [ navigation ])
 
+  // Define e-sport slugs based on actual data
+  const eSportSlugs = [ 'lol', 'cs2', 'dota-2' ]
+
   if (isFetching) {
     return <Skeleton className={className} />
   }
+
+  // Separate e-sports and other sports
+  const eSports = sortedSports.filter(sport => eSportSlugs.includes(sport.slug))
+  const otherSports = sortedSports.filter(sport => !eSportSlugs.includes(sport.slug))
 
   return (
     <div className={className}>
       <Message className="text-caption-14 font-semibold py-2 px-4 mb-2" value={messages.title} tag="p" />
       <Sport slug="/" name={messages.top} gamesCount={allTopGames} />
-      {
-        sortedSports?.map(sport => {
-          const { activeLiveGamesCount, activePrematchGamesCount } = sport
-          const gamesCount = isLive ? activeLiveGamesCount : activePrematchGamesCount
+      {/* Other Sports Box */}
+      {otherSports.length > 0 && (
+        <div className="bg-bg-l2 rounded-md p-2 mt-2">
+          <Message value="Sports" className="text-caption-13 font-bold mb-2 px-2" />
+          {otherSports.map(sport => {
+            const { activeLiveGamesCount, activePrematchGamesCount } = sport;
+            const gamesCount = isLive ? activeLiveGamesCount : activePrematchGamesCount;
 
-          return (
-            <Sport key={sport.slug} gamesCount={gamesCount} {...sport} />
-          )
-        })
-      }
+            return (
+              <Sport key={sport.slug} gamesCount={gamesCount} {...sport} />
+            );
+          })}
+        </div>
+      )}
+      {/* E-Sports Box */}
+      {eSports.length > 0 && (
+        <div className="bg-bg-l2 rounded-md p-2 mt-2">
+          <Message value="E-Sports" className="text-caption-13 font-bold mb-2 px-2" />
+          {eSports.map(sport => {
+            const { activeLiveGamesCount, activePrematchGamesCount } = sport;
+            const gamesCount = isLive ? activeLiveGamesCount : activePrematchGamesCount;
+
+            return (
+              <Sport key={sport.slug} gamesCount={gamesCount} {...sport} />
+            );
+          })}
+        </div>
+      )}
     </div>
   )
 }
