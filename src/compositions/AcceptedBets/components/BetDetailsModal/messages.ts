@@ -1,46 +1,60 @@
 export default {
   title: {
-    en: 'Bet Details',
+    en: "Bet Details",
+    fr: "Détails du pari",
   },
   market: {
-    en: 'Market',
+    en: "Market",
+    fr: "Marché",
   },
   outcome: {
-    en: 'Outcome',
+    en: "Outcome",
+    fr: "Résultat",
   },
   odds: {
-    en: 'Odds',
+    en: "Odds",
+    fr: "Cotes",
   },
   freebet: {
-    en: 'Freebet',
+    en: "Freebet",
+    fr: "Pari gratuit",
   },
   totalOdds: {
-    en: 'Total odds',
+    en: "Total odds",
+    fr: "Cotes totales",
   },
   betAmount: {
-    en: 'Bet amount',
+    en: "Bet amount",
+    fr: "Montant du pari",
   },
   possibleWin: {
-    en: 'Possible win',
+    en: "Possible win",
+    fr: "Gain possible",
   },
   cashoutReady: {
-    en: 'cash-out ≈{amount} {symbol}',
+    en: "cash-out ≈{amount} {symbol}",
+    fr: "retrait ≈{amount} {symbol}",
   },
   cashout: {
-    en: 'cash-out',
+    en: "cash-out",
+    fr: "retrait",
   },
   gameState: {
     declined: {
-      en: 'Declined',
+      en: "Declined",
+      fr: "Refusé",
     },
     win: {
-      en: 'Won',
+      en: "Won",
+      fr: "Gagné",
     },
     lose: {
-      en: 'Lost',
+      en: "Lost",
+      fr: "Perdu",
     },
     live: {
-      en: 'Live\’',
+      en: "Live’",
+      fr: "En direct",
     },
   },
-}
+};

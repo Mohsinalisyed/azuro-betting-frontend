@@ -1,5 +1,6 @@
 export default {
   live: {
-    en: 'Live',
+    en: "Live",
+    fr: "En direct",
   },
-}
+};

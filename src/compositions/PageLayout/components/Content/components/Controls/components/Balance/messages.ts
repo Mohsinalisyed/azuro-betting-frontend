@@ -1,11 +1,14 @@
 export default {
   balance: {
-    en: 'Balance',
+    en: "Balance",
+    fr: "Solde",
   },
   inBets: {
-    en: 'In bets',
+    en: "In bets",
+    fr: "En paris",
   },
   toRedeem: {
-    en: 'To redeem',
+    en: "To redeem",
+    fr: "À récupérer",
   },
-}
+};
