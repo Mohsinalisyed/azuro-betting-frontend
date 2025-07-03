@@ -1,23 +1,30 @@
 export default {
   title: {
-    en: 'Select bonuses',
+    en: "Select bonuses",
+    fr: "Sélectionner des bonus",
   },
   text: {
-    en: 'Select a bonus and apply it to your bet',
+    en: "Select a bonus and apply it to your bet",
+    fr: "Sélectionnez un bonus et appliquez-le à votre pari",
   },
   amount: {
-    en: 'Amount',
+    en: "Amount",
+    fr: "Montant",
   },
   odds: {
-    en: 'Min. odds',
+    en: "Min. odds",
+    fr: "Cotes min.",
   },
   until: {
-    en: 'Available until',
+    en: "Available until",
+    fr: "Disponible jusqu'à",
   },
   value: {
-    en: 'Value:',
+    en: "Value:",
+    fr: "Valeur :",
   },
   apply: {
-    en: 'Apply bonus',
+    en: "Apply bonus",
+    fr: "Appliquer le bonus",
   },
-}
+};

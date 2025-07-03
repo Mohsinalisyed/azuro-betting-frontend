@@ -1,8 +1,10 @@
 export default {
   locked: {
-    en: 'Outcome removed or suspended',
+    en: "Outcome removed or suspended",
+    fr: "Résultat supprimé ou suspendu",
   },
   possibleWin: {
-    en: 'Possible win',
+    en: "Possible win",
+    fr: "Gain possible",
   },
-}
+};

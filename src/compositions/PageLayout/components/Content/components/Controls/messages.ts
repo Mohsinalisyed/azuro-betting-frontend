@@ -1,8 +1,10 @@
 export default {
   myBets: {
-    en: 'My bets',
+    en: "My bets",
+    fr: "Mes paris",
   },
   disconnect: {
-    en: 'Disconnect',
+    en: "Disconnect",
+    fr: "Déconnexion",
   },
-}
+};

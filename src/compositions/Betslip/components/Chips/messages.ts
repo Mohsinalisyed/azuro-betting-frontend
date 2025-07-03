@@ -1,5 +1,6 @@
 export default {
   max: {
-    en: 'max',
+    en: "max",
+    fr: "max",
   },
-}
+};

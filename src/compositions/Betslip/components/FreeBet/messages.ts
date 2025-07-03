@@ -1,8 +1,10 @@
 export default {
   apply: {
-    en: 'Apply Bonus',
+    en: "Apply Bonus",
+    fr: "Appliquer le bonus",
   },
   freebet: {
-    en: 'Freebet',
+    en: "Freebet",
+    fr: "Pari gratuit",
   },
-}
+};

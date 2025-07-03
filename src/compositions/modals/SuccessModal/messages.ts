@@ -1,5 +1,6 @@
 export default {
   title: {
-    en: 'Success!',
+    en: "Success!",
+    fr: "Succès !",
   },
-}
+};
