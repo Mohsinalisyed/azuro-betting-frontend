@@ -7,7 +7,7 @@ import { useDisconnect } from 'wagmi'
 import { useAccount } from '@azuro-org/sdk-social-aa-connector'
 import copy from 'copy-to-clipboard'
 import { useIsMounted } from 'hooks'
-import { Message } from '@locmod/intl'
+import { Message, useIntl } from '@locmod/intl'
 import cx from 'classnames'
 import { constants, shortenAddress, toLocaleString } from 'helpers'
 
@@ -73,6 +73,40 @@ const AzuroWaves: React.FC = () => {
   )
 }
 
+const LanguageSelector: React.FC = () => {
+  const { setLocale } = useIntl();
+  // Try to get the current locale from the browser or fallback to 'en'
+  const currentLocale = typeof navigator !== 'undefined' && navigator.language
+    ? navigator.language.split('-')[0]
+    : 'en';
+  const languages = [
+    { code: 'en', label: 'English' },
+    { code: 'fr', label: 'Français' },
+  ];
+  const [locale, setLocalLocale] = React.useState(currentLocale);
+
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setLocalLocale(e.target.value);
+    setLocale(e.target.value);
+  };
+
+  return (
+    <div className="flex items-center gap-2 mt-2 px-2">
+      <Icon className="size-4" name="interface/lose" />
+      <select
+        className="bg-transparent py-1 text-caption-13 text-grey-60 focus:outline-none"
+        value={locale}
+        onChange={e => setLocale(e.target.value)}
+        aria-label="Select language"
+      >
+        {languages.map(lang => (
+          <option key={lang.code} value={lang.code} className="bg-transparent">{lang.label}</option>
+        ))}
+      </select>
+    </div>
+  );
+};
+
 const Content: React.FC = () => {
   const { address } = useAccount()
   const { disconnect } = useDisconnect()
@@ -119,6 +153,7 @@ const Content: React.FC = () => {
         </div>
         <AzuroWaves />
       </div>
+      <LanguageSelector />
       <Href to="/profile" className="mt-2 p-2 flex items-center text-grey-60 hover:text-grey-90 transition-all">
         <Icon className="size-4 mr-2" name="interface/mybets" />
         <Message className="text-caption-13" value={messages.myBets} />
