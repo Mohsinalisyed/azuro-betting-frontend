@@ -100,6 +100,9 @@ const config: Config = {
         'gradient-azuro-waves-brilliant': 'url(#gradient-azuro-waves-brilliant)',
         'gradient-azuro-waves-royal': 'url(#gradient-azuro-waves-royal)',
       },
+      fontFamily: {
+        sans: ['Roboto', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
     },
   },
   plugins: [

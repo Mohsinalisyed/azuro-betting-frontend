@@ -18,14 +18,14 @@ const config: Partial<WidgetConfig> = {
   theme: {
     palette: {
       primary: {
-        main: '#ED742E',
+        main: '#1592D4',
       },
       secondary: {
-        main: '#111111',
+        main: '#181E25',
       },
     },
     typography: {
-      fontFamily: 'Inter, sans-serif',
+      fontFamily: 'Roboto, sans-serif',
     },
     container: {
       fontSize: '16px',
