@@ -1,6 +1,6 @@
 export default {
   ended: {
-    en: "Ended",
-    fr: "Terminé",
+    en: 'Ended',
+    fr: 'Terminé',
   },
-};
+}

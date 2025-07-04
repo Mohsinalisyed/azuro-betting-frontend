@@ -1,5 +1,6 @@
 import { BetType } from '@azuro-org/sdk'
 
+
 export default {
   single: {
     en: 'Single',
@@ -75,7 +76,7 @@ export default {
       fr: 'Perdu',
     },
     live: {
-      en: 'Live\’',
+      en: 'Live’',
       fr: 'En direct',
     },
   },
@@ -114,4 +115,5 @@ export default {
       en: 'Settled',
       fr: 'Réglés',
     },
-  }
+  },
+}

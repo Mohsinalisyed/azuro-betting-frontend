@@ -72,17 +72,17 @@ const Header: React.FC = () => {
           <Logo className="h-full" />
         </div>
         {
-          // Boolean(account) ? (
+          Boolean(account) ? (
             <Controls />
-          // ) : (
-          //   <Button
-          //     className="ml-auto"
-          //     title={buttonMessages.connectWallet}
-          //     size={32}
-          //     loading={isConnecting || isReconnecting}
-          //     onClick={login}
-          //   />
-          // )
+          ) : (
+            <Button
+              className="ml-auto"
+              title={buttonMessages.connectWallet}
+              size={32}
+              loading={isConnecting || isReconnecting}
+              onClick={login}
+            />
+          )
         }
       </div>
       {

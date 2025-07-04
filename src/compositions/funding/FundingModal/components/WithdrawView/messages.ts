@@ -1,7 +1,7 @@
 export default {
   title: {
-    en: "Withdraw crypto",
-    fr: "Retirer des cryptos",
+    en: 'Withdraw crypto',
+    fr: 'Retirer des cryptos',
   },
   steps: {
     0: {
@@ -9,8 +9,8 @@ export default {
       fr: 'Ouvrez votre Coinbase, Binance ou un autre <Tooltip text="Coinbase, Robinhood, Crypto.com, Gate.io, Kucoin">portefeuille crypto</Tooltip>',
     },
     1: {
-      en: "Copy your wallet address and paste it below.",
-      fr: "Copiez l’adresse de votre portefeuille et collez-la ci-dessous.",
+      en: 'Copy your wallet address and paste it below.',
+      fr: 'Copiez l’adresse de votre portefeuille et collez-la ci-dessous.',
     },
   },
-};
+}

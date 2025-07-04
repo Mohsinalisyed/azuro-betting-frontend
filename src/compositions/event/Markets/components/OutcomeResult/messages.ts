@@ -1,6 +1,6 @@
 export default {
   refunded: {
-    en: "Refunded",
-    fr: "Remboursé",
+    en: 'Refunded',
+    fr: 'Remboursé',
   },
-};
+}

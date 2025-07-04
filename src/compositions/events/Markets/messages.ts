@@ -1,6 +1,6 @@
 export default {
   markets: {
-    en: "Markets",
-    fr: "Marchés",
+    en: 'Markets',
+    fr: 'Marchés',
   },
-};
+}
