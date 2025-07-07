@@ -75,22 +75,42 @@ const AzuroWaves: React.FC = () => {
 
 const LanguageSelector: React.FC = () => {
   const { setLocale } = useIntl()
-  // Try to get the current locale from the browser or fallback to 'en'
-  const currentLocale = typeof navigator !== 'undefined' && navigator.language
-    ? navigator.language.split('-')[0]
-    : 'en'
+  // Get saved locale or fallback to browser or 'en'
+  const getInitialLocale = () => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('locale')
+
+      if (saved) {
+        return saved
+      }
+
+      if (navigator.language) {
+        return navigator.language.split('-')[0]
+      }
+    }
+
+    return 'en'
+  }
   const languages = [
     { code: 'en', label: 'English' },
     { code: 'fr', label: 'Français' },
   ]
-  const [ locale, setLocalLocale ] = React.useState(currentLocale)
+  const [ locale, setLocalLocale ] = React.useState(getInitialLocale)
   const [ isOpen, setIsOpen ] = React.useState(false)
 
   const handleSelect = (code: string) => {
     setLocalLocale(code)
     setLocale(code)
+
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('locale', code)
+    }
     setIsOpen(false)
   }
+
+  React.useEffect(() => {
+    setLocale(locale)
+  }, [ locale, setLocale ])
 
   return (
     <Dropdown
