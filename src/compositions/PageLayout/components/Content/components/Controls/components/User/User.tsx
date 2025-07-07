@@ -84,28 +84,53 @@ const LanguageSelector: React.FC = () => {
     { code: 'fr', label: 'Français' },
   ]
   const [ locale, setLocalLocale ] = React.useState(currentLocale)
+  const [ isOpen, setIsOpen ] = React.useState(false)
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setLocalLocale(e.target.value)
-    setLocale(e.target.value)
+  const handleSelect = (code: string) => {
+    setLocalLocale(code)
+    setLocale(code)
+    setIsOpen(false)
   }
 
   return (
-    <div className="flex items-center gap-2 mt-2 px-2">
-      <Icon className="size-4" name="interface/lose" />
-      <select
-        className="bg-brand-5 py-1 text-caption-13 text-grey-60 focus:outline-none"
-        value={locale}
-        onChange={e => setLocale(e.target.value)}
-        aria-label="Select language"
+    <Dropdown
+      className="mt-2 bg-transparent"
+      contentClassName="min-w-[120px]"
+      placement="bottomRight"
+      content={
+        (
+          <div className="absolute left-4 flex flex-col ml-2 py-1 bg-grey-15 rounded-2">
+            {
+              languages.map(lang => (
+                <button
+                  key={lang.code}
+                  className={
+                    cx(
+                      'px-3 py-1 text-left text-caption-13 hover:bg-grey-10 transition',
+                      lang.code === locale && 'font-bold text-brand-500'
+                    )
+                  }
+                  onClick={() => handleSelect(lang.code)}
+                  type="button"
+                >
+                  {lang.label}
+                </button>
+              ))
+            }
+          </div>
+        )
+      }
+    >
+      <button
+        className="flex items-center gap-2  py-1 px-2 rounded text-caption-13 text-grey-60 focus:outline-none"
+        type="button"
+        onClick={() => setIsOpen(v => !v)}
       >
-        {
-          languages.map(lang => (
-            <option key={lang.code} value={lang.code} className="bg-transparent">{lang.label}</option>
-          ))
-        }
-      </select>
-    </div>
+        <Icon className="size-4" name="interface/lose" />
+        {languages.find(l => l.code === locale)?.label}
+        <Icon className={cx('size-3 transition', isOpen && 'rotate-180')} name="interface/caret_down" />
+      </button>
+    </Dropdown>
   )
 }
 
