@@ -7,7 +7,7 @@ import { useDisconnect } from 'wagmi'
 import { useAccount } from '@azuro-org/sdk-social-aa-connector'
 import copy from 'copy-to-clipboard'
 import { useIsMounted } from 'hooks'
-import { Message } from '@locmod/intl'
+import { Message, useIntl } from '@locmod/intl'
 import cx from 'classnames'
 import { constants, shortenAddress, toLocaleString } from 'helpers'
 
@@ -73,6 +73,67 @@ const AzuroWaves: React.FC = () => {
   )
 }
 
+const LanguageSelector: React.FC = () => {
+  const { setLocale } = useIntl()
+  // Try to get the current locale from the browser or fallback to 'en'
+  const currentLocale = typeof navigator !== 'undefined' && navigator.language
+    ? navigator.language.split('-')[0]
+    : 'en'
+  const languages = [
+    { code: 'en', label: 'English' },
+    { code: 'fr', label: 'Français' },
+  ]
+  const [ locale, setLocalLocale ] = React.useState(currentLocale)
+  const [ isOpen, setIsOpen ] = React.useState(false)
+
+  const handleSelect = (code: string) => {
+    setLocalLocale(code)
+    setLocale(code)
+    setIsOpen(false)
+  }
+
+  return (
+    <Dropdown
+      className="mt-2 bg-transparent"
+      contentClassName="min-w-[120px]"
+      placement="bottomRight"
+      content={
+        (
+          <div className="absolute left-4 flex flex-col ml-2 py-1 bg-grey-15 rounded-2">
+            {
+              languages.map(lang => (
+                <button
+                  key={lang.code}
+                  className={
+                    cx(
+                      'px-3 py-1 text-left text-caption-13 hover:bg-grey-10 transition',
+                      lang.code === locale && 'font-bold text-brand-500'
+                    )
+                  }
+                  onClick={() => handleSelect(lang.code)}
+                  type="button"
+                >
+                  {lang.label}
+                </button>
+              ))
+            }
+          </div>
+        )
+      }
+    >
+      <button
+        className="flex items-center gap-2  py-1 px-2 rounded text-caption-13 text-grey-60 focus:outline-none"
+        type="button"
+        onClick={() => setIsOpen(v => !v)}
+      >
+        <Icon className="size-4" name="interface/lose" />
+        {languages.find(l => l.code === locale)?.label}
+        <Icon className={cx('size-3 transition', isOpen && 'rotate-180')} name="interface/caret_down" />
+      </button>
+    </Dropdown>
+  )
+}
+
 const Content: React.FC = () => {
   const { address } = useAccount()
   const { disconnect } = useDisconnect()
@@ -119,6 +180,7 @@ const Content: React.FC = () => {
         </div>
         <AzuroWaves />
       </div>
+      <LanguageSelector />
       <Href to="/profile" className="mt-2 p-2 flex items-center text-grey-60 hover:text-grey-90 transition-all">
         <Icon className="size-4 mr-2" name="interface/mybets" />
         <Message className="text-caption-13" value={messages.myBets} />
