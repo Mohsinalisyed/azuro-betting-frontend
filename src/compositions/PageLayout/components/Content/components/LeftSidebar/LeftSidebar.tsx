@@ -3,6 +3,7 @@
 import React from 'react'
 
 import { Logo } from 'components/ui'
+import VerifyAttestations from 'components/Attestaion/VerifyAttestations'
 import Navigation from 'compositions/Navigation/Navigation'
 import LiveSwitcher from 'compositions/LiveSwitcher/LiveSwitcher'
 
@@ -18,6 +19,7 @@ const LeftSidebar: React.FC = () => {
       </div>
       <div className="p-2 rounded-l-md overflow-auto wd:h-[calc(100vh_-_5rem)] no-scrollbar bg-sidebar-active-gradient">
         <LiveSwitcher />
+        <VerifyAttestations />
         <Navigation className="mt-2" />
       </div>
     </div>
