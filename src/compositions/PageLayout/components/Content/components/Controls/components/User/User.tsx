@@ -73,7 +73,7 @@ const AzuroWaves: React.FC = () => {
   )
 }
 
-const LanguageSelector: React.FC = () => {
+export const LanguageSelector: React.FC = () => {
   const { setLocale } = useIntl()
   // Get saved locale or fallback to browser or 'en'
   const getInitialLocale = () => {

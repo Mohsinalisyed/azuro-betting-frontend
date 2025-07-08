@@ -9,6 +9,7 @@ import TabbedBetslip from 'compositions/TabbedBetslip/TabbedBetslip'
 import LiveStatistics from 'compositions/LiveStatistics/LiveStatistics'
 
 import Controls from '../Controls/Controls'
+import { LanguageSelector } from '../Controls/components/User/User'
 
 
 const RightSidebar: React.FC = () => {
@@ -17,18 +18,21 @@ const RightSidebar: React.FC = () => {
 
   return (
     <>
-      <div className="px-6  sticky top-0 z-20 h-[80px] flex items-center">
+      <div className="sticky top-0 z-20 h-[80px] flex items-center">
         {
           Boolean(account) ? (
             <Controls className="ml-auto" />
           ) : (
-            <Button
-              className="ml-auto"
-              title={buttonMessages.connectWallet}
-              size={40}
-              loading={isConnecting || isReconnecting}
-              onClick={login}
-            />
+            <>
+              <LanguageSelector />
+              <Button
+                className="ml-auto"
+                title={buttonMessages.connectWallet}
+                size={40}
+                loading={isConnecting || isReconnecting}
+                onClick={login}
+              />
+            </>
           )
         }
       </div>
