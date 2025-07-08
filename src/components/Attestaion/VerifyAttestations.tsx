@@ -8,11 +8,11 @@ export default function VerifyAttestations() {
   console.log(data, 'Response Of Attestation Api!')
 
   if (isLoading) {
-    return <p>Loading...</p>
+    return <p className="hidden">Loading...</p>
   }
 
   if (error) {
-    return console.log(error, 'Error in Attestation Api!')
+    return <p className="hidden">Error loading attestations</p>
   }
 
   return (
