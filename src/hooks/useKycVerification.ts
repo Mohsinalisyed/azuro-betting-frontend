@@ -41,7 +41,7 @@ export const useKycVerification = (recipient: string) => {
         attestations,
       }
     },
-    retry: false,
+    retry: true,
   })
 }
 

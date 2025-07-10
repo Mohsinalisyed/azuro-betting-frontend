@@ -12,6 +12,7 @@ import Providers from 'compositions/Providers/Providers'
 import PageLayout from 'compositions/PageLayout/PageLayout'
 
 import '../scss/globals.scss'
+import { KycModalProvider } from 'src/contexts/KycModal/KycModalContext'
 
 
 dayjs.extend(utc)
@@ -54,9 +55,12 @@ export default async function RootLayout({
           initialLiveState={initialLiveState}
           initialChainId={initialChainId}
         >
+          <KycModalProvider>
+
           <PageLayout>
             {children}
           </PageLayout>
+          </KycModalProvider>
         </Providers>
       </body>
     </html>

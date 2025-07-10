@@ -19,13 +19,10 @@ axiosInstance.interceptors.request.use(
       config.headers.Authorization = `Bearer ${token}`
     }
 
-    console.log('[Axios Request]', config)
 
     return config
   },
   (error) => {
-    console.error('[Axios Request Error]', error)
-
     return Promise.reject(error)
   }
 )
@@ -33,7 +30,6 @@ axiosInstance.interceptors.request.use(
 // ✅ Response Interceptor
 axiosInstance.interceptors.response.use(
   (response) => {
-    console.log('[Axios Response]', response)
 
     return response
   },
