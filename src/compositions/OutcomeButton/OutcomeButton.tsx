@@ -2,13 +2,13 @@
 
 import React, { useRef, useState } from 'react'
 import cx from 'classnames'
+import { type GameQuery, type MarketOutcome } from '@azuro-org/toolkit'
 import { Icon } from 'components/ui'
+import { useKycVerification } from 'src/hooks/useKycVerification'
+import { useKycModal } from 'src/contexts/KycModal/KycModalContext'
 import OddsValue from 'compositions/OddsValue/OddsValue'
 import useButton from './utils/useButton'
-import { useKycVerification } from 'src/hooks/useKycVerification'
 
-import { type GameQuery, type MarketOutcome } from '@azuro-org/toolkit'
-import { useKycModal } from 'src/contexts/KycModal/KycModalContext'
 
 type OutcomeButtonProps = {
   marketName: string
@@ -24,14 +24,13 @@ const OutcomeButton: React.FC<OutcomeButtonProps> = (props) => {
   const { odds, isActive, onClick: originalOnClick } = useButton({ marketName, outcome, game, nodeRef })
 
   // KYC check
-  const { openModal,kycLoading,kycVerification } = useKycModal()
-console.log(kycVerification,'kycVerification')
+  const { openModal, kycLoading, kycVerification } = useKycModal()
 
   const handleClick = () => {
-    if (kycVerification?.isVerified) {
+    if (!kycVerification?.isVerified) {
       openModal()
-      console.log('Kyc is verified!')
-    } else {
+    }
+    else {
       originalOnClick()
     }
   }
@@ -57,35 +56,43 @@ console.log(kycVerification,'kycVerification')
         onClick={handleClick}
       >
         <div className="flex items-center">
-          {isLocked && (
-            <Icon className="mr-1 size-4 text-grey-40" name="interface/lock" />
-          )}
+          {
+            isLocked && (
+              <Icon className="mr-1 size-4 text-grey-40" name="interface/lock" />
+            )
+          }
           <div
-            className={cx('text-left whitespace-normal', {
-              'group-hover/button:text-brand-50': !isLocked && !isActive,
-              'text-grey-10': isActive,
-              'text-grey-60': !isActive,
-              'text-grey-40': isLocked,
-            })}
+            className={
+              cx('text-left whitespace-normal', {
+                'group-hover/button:text-brand-50': !isLocked && !isActive,
+                'text-grey-10': isActive,
+                'text-grey-60': !isActive,
+                'text-grey-40': isLocked,
+              })
+            }
           >
             {outcome.selectionName}
           </div>
         </div>
         <div ref={nodeRef} className="group/odds flex items-center">
           <Icon
-            className={cx(
-              'size-4 text-transparent transition-color',
-              'group-[.increased]/odds:text-accent-green',
-              'group-[.decreased]/odds:text-accent-red group-[.decreased]/odds:rotate-180'
-            )}
+            className={
+              cx(
+                'size-4 text-transparent transition-color',
+                'group-[.increased]/odds:text-accent-green',
+                'group-[.decreased]/odds:text-accent-red group-[.decreased]/odds:rotate-180'
+              )
+            }
             name="interface/caret_up"
           />
           <OddsValue
-            className={cx(
-              'transition-color',
-              'group-[.increased]/odds:text-accent-green',
-              'group-[.decreased]/odds:text-accent-red'
-            )}
+            className={
+              cx(
+                'transition-color',
+                'group-[.increased]/odds:text-accent-green',
+                'group-[.decreased]/odds:text-accent-red'
+              )
+            }
             odds={odds}
           />
         </div>

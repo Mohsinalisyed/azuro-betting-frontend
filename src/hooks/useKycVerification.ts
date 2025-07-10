@@ -3,17 +3,21 @@ import { useQuery } from '@tanstack/react-query'
 import { AbiCoder } from 'ethers'
 import { axiosInstance } from 'src/lib'
 
-const countrySchemaId = '0x1801901fabd0e6189356b4fb52bb0ab855276d84f7ec140839fbd1f6801ca065'
-const booleanSchemaId = '0xf8b05c79f090979bf4a80270aba232dff11a10d9ca55c4f88de95317970f0de9'
 
-export const useKycVerification = (recipient: string) => {
+const countrySchemaId = process.env.NEXT_PUBLIC_COUNTRY_SCHEMA_ID || ''
+const booleanSchemaId = process.env.NEXT_PUBLIC_BOOLEAN_SCHEMA_ID || ''
+
+export const useKycVerification = (recipient: string | undefined) => {
   return useQuery({
-    queryKey: ['kyc-verification', recipient],
+    queryKey: [ 'kyc-verification', recipient ],
     enabled: !!recipient,
     queryFn: async () => {
       const response = await axiosInstance.get(`/verify?recipient=${recipient}`)
       const attestations = response.data ?? []
 
+      if (!countrySchemaId || !booleanSchemaId) {
+        throw new Error('Missing schema IDs in environment variables.')
+      }
       const abiCoder = new AbiCoder()
 
       // Check for country "GB"
@@ -22,7 +26,7 @@ export const useKycVerification = (recipient: string) => {
       )
 
       const country = countryAtt
-        ? abiCoder.decode(['string'], countryAtt.data)[0]
+        ? abiCoder.decode([ 'string' ], countryAtt.data)[0]
         : null
 
       // Check for boolean true
@@ -31,7 +35,7 @@ export const useKycVerification = (recipient: string) => {
       )
 
       const flag = booleanAtt
-        ? abiCoder.decode(['bool'], booleanAtt.data)[0]
+        ? abiCoder.decode([ 'bool' ], booleanAtt.data)[0]
         : null
 
       return {

@@ -1,6 +1,7 @@
 // app/api/verify/route.js
 import { AbiCoder } from 'ethers'
 
+
 export async function GET(req) {
   const { searchParams } = new URL(req.url)
   const recipient = searchParams.get('recipient')
@@ -45,9 +46,10 @@ export async function GET(req) {
 
     if (countryAttestation) {
       const abiCoder = new AbiCoder()
-      const [countryCode] = abiCoder.decode(['string'], countryAttestation.data)
+      const [ countryCode ] = abiCoder.decode([ 'string' ], countryAttestation.data)
       console.log('User verified country:', countryCode)
-    } else {
+    }
+    else {
       console.log('No country attestation found.')
     }
 
@@ -55,8 +57,10 @@ export async function GET(req) {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     })
-  } catch (error) {
+  }
+  catch (error) {
     console.error('Error fetching attestations:', error)
+
     return new Response(JSON.stringify({ error: 'Failed to fetch attestations' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },

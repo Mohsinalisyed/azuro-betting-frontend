@@ -8,11 +8,11 @@ import { type ChainId } from '@azuro-org/toolkit'
 import { constants } from 'helpers'
 import { appChains } from 'wallet/chains'
 
+import { KycModalProvider } from 'src/contexts/KycModal/KycModalContext'
 import Providers from 'compositions/Providers/Providers'
 import PageLayout from 'compositions/PageLayout/PageLayout'
 
 import '../scss/globals.scss'
-import { KycModalProvider } from 'src/contexts/KycModal/KycModalContext'
 
 
 dayjs.extend(utc)
@@ -57,9 +57,9 @@ export default async function RootLayout({
         >
           <KycModalProvider>
 
-          <PageLayout>
-            {children}
-          </PageLayout>
+            <PageLayout>
+              {children}
+            </PageLayout>
           </KycModalProvider>
         </Providers>
       </body>
