@@ -39,7 +39,7 @@ export const useKycVerification = (recipient: string | undefined) => {
         : null
 
       return {
-        isVerified: country === 'GB' && flag === true,
+        isVerified: country !== 'US' && flag === true,
         country,
         flag,
         attestations,
