@@ -1,9 +1,16 @@
 // app/api/verify/route.js
 import { AbiCoder } from 'ethers'
 
-
 export async function GET(req) {
-  const recipient = '0xac838A3000715b2074DF56F82c3ecb177F331813'
+  const { searchParams } = new URL(req.url)
+  const recipient = searchParams.get('recipient')
+
+  if (!recipient) {
+    return new Response(JSON.stringify({ error: 'Missing recipient param' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }
 
   const query = `
     query {
@@ -28,9 +35,6 @@ export async function GET(req) {
     })
 
     const json = await response.json()
-
-    console.log('GraphQL response:', JSON.stringify(json, null, 2))
-
     const attestations = json?.data?.attestations ?? []
 
     const countrySchemaId = '0x1801901fabd0e6189356b4fb52bb0ab855276d84f7ec140839fbd1f6801ca065'
@@ -40,12 +44,10 @@ export async function GET(req) {
     )
 
     if (countryAttestation) {
-      const encodedData = countryAttestation.data
       const abiCoder = new AbiCoder()
-      const [ countryCode ] = abiCoder.decode([ 'string' ], encodedData)
+      const [countryCode] = abiCoder.decode(['string'], countryAttestation.data)
       console.log('User verified country:', countryCode)
-    }
-    else {
+    } else {
       console.log('No country attestation found.')
     }
 
@@ -53,10 +55,8 @@ export async function GET(req) {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     })
-  }
-  catch (error) {
+  } catch (error) {
     console.error('Error fetching attestations:', error)
-
     return new Response(JSON.stringify({ error: 'Failed to fetch attestations' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
