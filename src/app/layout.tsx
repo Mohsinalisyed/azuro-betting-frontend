@@ -8,6 +8,7 @@ import { type ChainId } from '@azuro-org/toolkit'
 import { constants } from 'helpers'
 import { appChains } from 'wallet/chains'
 
+import { KycModalProvider } from 'src/contexts/KycModal/KycModalContext'
 import Providers from 'compositions/Providers/Providers'
 import PageLayout from 'compositions/PageLayout/PageLayout'
 
@@ -54,9 +55,12 @@ export default async function RootLayout({
           initialLiveState={initialLiveState}
           initialChainId={initialChainId}
         >
-          <PageLayout>
-            {children}
-          </PageLayout>
+          <KycModalProvider>
+
+            <PageLayout>
+              {children}
+            </PageLayout>
+          </KycModalProvider>
         </Providers>
       </body>
     </html>

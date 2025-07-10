@@ -141,15 +141,17 @@ export const LanguageSelector: React.FC = () => {
         )
       }
     >
-      <button
-        className="flex items-center gap-2  py-1 px-2 rounded text-caption-13 text-grey-60 focus:outline-none"
-        type="button"
-        onClick={() => setIsOpen(v => !v)}
-      >
-        <Icon className="size-4" name="interface/lose" />
-        {languages.find(l => l.code === locale)?.label}
-        <Icon className={cx('size-3 transition', isOpen && 'rotate-180')} name="interface/caret_down" />
-      </button>
+      <div>
+        <button
+          className="flex items-center gap-2  py-1 px-2 rounded text-caption-13 text-grey-60 focus:outline-none"
+          type="button"
+          onClick={() => setIsOpen(v => !v)}
+        >
+          <Icon className="size-4" name="interface/lose" />
+          {languages.find(l => l.code === locale)?.label}
+          <Icon className={cx('size-3 transition', isOpen && 'rotate-180')} name="interface/caret_down" />
+        </button>
+      </div>
     </Dropdown>
   )
 }
