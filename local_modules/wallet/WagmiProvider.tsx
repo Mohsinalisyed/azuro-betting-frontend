@@ -32,6 +32,10 @@ export const queryClient = new QueryClient({
 const WagmiProvider: React.CFC<{ initialState?: State }> = (props) => {
   const { children, initialState } = props
 
+  if (!config) {
+    return null
+  }
+
   return (
     <QueryClientProvider client={queryClient}>
       <PrivyProvider
