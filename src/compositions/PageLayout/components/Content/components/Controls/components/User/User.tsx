@@ -119,7 +119,7 @@ export const LanguageSelector: React.FC = () => {
       placement="bottomRight"
       content={
         (
-          <div className="absolute left-4 flex flex-col ml-2 py-1 bg-grey-15 rounded-2">
+          <div className="absolute rounded-md top-[-12px] right-0 flex flex-col ml-2 py-1 bg-grey-15 rounded-2">
             {
               languages.map(lang => (
                 <button
