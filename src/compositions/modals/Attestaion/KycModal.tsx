@@ -22,6 +22,8 @@ const KycModal: React.FC<Props> = ({ open, onClose }) => {
   const hasCountry = !!kycVerification?.country
   const hasBoolean = !!kycVerification?.flag
   const isUS = kycVerification?.country === 'US'
+  const countrySchemaId = process.env.NEXT_PUBLIC_COUNTRY_SCHEMA_ID || ''
+  const booleanSchemaId = process.env.NEXT_PUBLIC_BOOLEAN_SCHEMA_ID || ''
 
   return (
     <Overlay>
@@ -46,7 +48,7 @@ const KycModal: React.FC<Props> = ({ open, onClose }) => {
                   Users from your region are not allowed to access this platform.
                   </p>
                   <a
-                    href="https://base.easscan.org/attestation/attestWithSchema/0x1801901fabd0e6189356b4fb52bb0ab855276d84f7ec140839fbd1f6801ca065"
+                    href={`https://base.easscan.org/attestation/attestWithSchema/${countrySchemaId }`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary hover:underline underline-offset-4 block mt-2"
@@ -65,7 +67,7 @@ const KycModal: React.FC<Props> = ({ open, onClose }) => {
                   {
                     !hasBoolean && (
                       <a
-                        href="https://base.easscan.org/attestation/attestWithSchema/0xf8b05c79f090979bf4a80270aba232dff11a10d9ca55c4f88de95317970f0de9"
+                        href={`https://base.easscan.org/attestation/attestWithSchema/${booleanSchemaId}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary hover:underline underline-offset-4 block mt-2"
@@ -78,7 +80,7 @@ const KycModal: React.FC<Props> = ({ open, onClose }) => {
                   {
                     !hasCountry && (
                       <a
-                        href="https://base.easscan.org/attestation/attestWithSchema/0x1801901fabd0e6189356b4fb52bb0ab855276d84f7ec140839fbd1f6801ca065"
+                        href={`https://base.easscan.org/attestation/attestWithSchema/${countrySchemaId }`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary hover:underline underline-offset-4 block mt-2"
