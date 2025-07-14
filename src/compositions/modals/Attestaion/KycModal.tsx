@@ -15,15 +15,19 @@ const KycModal: React.FC<Props> = ({ open, onClose }) => {
   const { address } = useAccount()
   const { data: kycVerification } = useKycVerification(address)
 
-  if (!open) {
-    return null
-  }
-
   const hasCountry = !!kycVerification?.country
   const hasBoolean = !!kycVerification?.flag
   const isUS = kycVerification?.country === 'US'
+
+  const isExpiredCountry = kycVerification?.isExpiredCountry
+  const isExpiredFlag = kycVerification?.isExpiredFlag
+
   const countrySchemaId = process.env.NEXT_PUBLIC_COUNTRY_SCHEMA_ID || ''
   const booleanSchemaId = process.env.NEXT_PUBLIC_BOOLEAN_SCHEMA_ID || ''
+
+  if (!open) {
+    return null
+  }
 
   return (
     <Overlay>
@@ -48,7 +52,7 @@ const KycModal: React.FC<Props> = ({ open, onClose }) => {
                   Users from your region are not allowed to access this platform.
                   </p>
                   <a
-                    href={`https://base.easscan.org/attestation/attestWithSchema/${countrySchemaId }`}
+                    href={`https://base.easscan.org/attestation/attestWithSchema/${countrySchemaId}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary hover:underline underline-offset-4 block mt-2"
@@ -59,13 +63,21 @@ const KycModal: React.FC<Props> = ({ open, onClose }) => {
               ) : hasCountry && hasBoolean ? (
                 <p className="text-green-600 font-medium">✅ Your wallet is fully KYC verified.</p>
               ) : (
-                <p className="text-brand-70 font-medium">
-                User <span className="text-red-500 font-semibold">KYC Unverified</span>.<br />
-                To play our games, please verify your wallet by completing the following attestations:
-                  <br />
+                <div className="text-brand-70 font-medium">
+                  <p>
+                  User <span className="text-red-500 font-semibold">KYC Unverified</span>.
+                  </p>
 
                   {
-                    !hasBoolean && (
+                    (isExpiredCountry || isExpiredFlag) && (
+                      <p className="text-orange-500 font-semibold mb-2">
+                    One or more of your KYC verifications have expired. Please re-verify:
+                      </p>
+                    )
+                  }
+
+                  {
+                    !hasBoolean || isExpiredFlag ? (
                       <a
                         href={`https://base.easscan.org/attestation/attestWithSchema/${booleanSchemaId}`}
                         target="_blank"
@@ -74,22 +86,22 @@ const KycModal: React.FC<Props> = ({ open, onClose }) => {
                       >
                     Verify Identity Status
                       </a>
-                    )
+                    ) : null
                   }
 
                   {
-                    !hasCountry && (
+                    !hasCountry || isExpiredCountry ? (
                       <a
-                        href={`https://base.easscan.org/attestation/attestWithSchema/${countrySchemaId }`}
+                        href={`https://base.easscan.org/attestation/attestWithSchema/${countrySchemaId}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary hover:underline underline-offset-4 block mt-2"
                       >
                     Verify Country of Residence
                       </a>
-                    )
+                    ) : null
                   }
-                </p>
+                </div>
               )
             }
           </div>
