@@ -47,7 +47,6 @@ export const KycModalProvider = ({ children }: { children: ReactNode }) => {
   const { address } = useAccount()
   //   '0xac838A3000715b2074DF56F82c3ecb177F331813'
   const { data: kycVerification, isLoading: kycLoading } = useKycVerification(address)
-
   const openModal = () => setIsOpen(true)
   const closeModal = () => setIsOpen(false)
 
