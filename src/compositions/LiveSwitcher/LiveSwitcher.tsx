@@ -15,16 +15,25 @@ const Switch = () => {
   const { isLive, changeLive } = useLive()
 
   return (
-    <HeadlessSwitch
-      checked={isLive}
-      onChange={changeLive}
-      className="relative flex h-5 w-9 cursor-pointer rounded-sm bg-bg-l1 px-1 items-center transition-colors duration-200 ease-in-out  ui-checked:bg-accent-red border border-grey-10 ui-checked:border-accent-red"
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none inline-block size-3 translate-x-0 rounded-full bg-grey-60 transition duration-200 ease-in-out ui-checked:translate-x-4 ui-checked:bg-grey-10"
-      />
-    </HeadlessSwitch>
+<HeadlessSwitch
+  checked={isLive}
+  onChange={changeLive}
+  className="relative flex h-5 w-12 cursor-pointer rounded-sm bg-white px-1 items-center transition-colors duration-200 ease-in-out ui-checked:bg-accent-red border border-grey-10 ui-checked:border-accent-red"
+>
+  {/* ON/OFF label in center */}
+  <span className={`absolute inset-0 flex w-full items-center ${isLive ? 'justify-start': 'justify-end'} px-1 text-[10px] font-medium ${!isLive ? 'text-green-700' : 'text-red-600'} pointer-events-none select-none`}>
+    {!isLive ? 'On' : 'Off'}
+  </span>
+
+  {/* Circle */}
+  <span
+    aria-hidden="true"
+    className="pointer-events-none inline-block size-3 transform rounded-full bg-black transition-transform duration-200 ease-in-out translate-x-0 ui-checked:translate-x-[24px] ui-checked:bg-grey-10"
+  />
+</HeadlessSwitch>
+
+
+
   )
 }
 

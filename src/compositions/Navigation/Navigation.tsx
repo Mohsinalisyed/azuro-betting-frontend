@@ -15,6 +15,7 @@ import { Flag } from 'components/dataDisplay'
 import Skeleton from './components/Skeleton/Skeleton'
 
 import messages from './messages'
+import Link from 'next/link'
 
 
 type LeagueProps = NavigationQuery['sports'][0]['countries'][0]['leagues'][0] & {
@@ -113,7 +114,9 @@ const Sport: React.FC<SportProps> = (props) => {
             Boolean(isTop || isUnique || !leagues?.length) ? (
               <div className="text-caption-12 min-w-4 text-center">{gamesCount || 0}</div>
             ) : (
-              <Icon className={iconClassName} name="interface/chevron_down" />
+              <Link href='/'>
+              <Icon  className={iconClassName} name="interface/chevron_down" />
+              </Link>
             )
           }
         </Href>
