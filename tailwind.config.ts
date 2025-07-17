@@ -32,7 +32,7 @@ const config: Config = {
         'grey-60': '#ffffff', // muted text
         'grey-40': '#4B5563', // borders/dividers
         'grey-20': '#232B36', // subtle backgrounds
-        'grey-15': '#181E25',
+        'grey-15': '#4B5563',
         'grey-10': '#10141A',
 
         'primary': '#1DAEFF', // bright blue for buttons, highlights

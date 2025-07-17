@@ -65,7 +65,7 @@ const KycModal: React.FC<Props> = ({ open, onClose }) => {
               ) : (
                 <div className="text-brand-70 font-medium">
                   <p>
-                  User <span className="text-red-500 font-semibold">KYC Unverified</span>.
+                  We use CoinBase onchain verification.
                   </p>
 
                   {

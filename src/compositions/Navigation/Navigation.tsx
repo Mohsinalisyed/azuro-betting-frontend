@@ -6,6 +6,7 @@ import { Message } from '@locmod/intl'
 import { useLive, useNavigation } from '@azuro-org/sdk'
 import { type NavigationQuery } from '@azuro-org/toolkit'
 import cx from 'classnames'
+import Link from 'next/link'
 import { constants } from 'helpers'
 
 import { Icon, type IconName } from 'components/ui'
@@ -15,7 +16,6 @@ import { Flag } from 'components/dataDisplay'
 import Skeleton from './components/Skeleton/Skeleton'
 
 import messages from './messages'
-import Link from 'next/link'
 
 
 type LeagueProps = NavigationQuery['sports'][0]['countries'][0]['leagues'][0] & {
@@ -114,8 +114,8 @@ const Sport: React.FC<SportProps> = (props) => {
             Boolean(isTop || isUnique || !leagues?.length) ? (
               <div className="text-caption-12 min-w-4 text-center">{gamesCount || 0}</div>
             ) : (
-              <Link href='/'>
-              <Icon  className={iconClassName} name="interface/chevron_down" />
+              <Link href="/">
+                <Icon className={iconClassName} name="interface/chevron_down" />
               </Link>
             )
           }

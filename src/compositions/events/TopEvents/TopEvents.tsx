@@ -197,10 +197,10 @@ const TopEvents: React.FC = () => {
   const sport = messages[params.sportSlug as string]
 
   return (
-    <div className="relative pt-6">
+    <div className="relative pt-6 mb:pt-2">
       <div className="px-4">
         <Message className="text-caption-13 text-grey-60 uppercase" value={messages.title} />
-        <h1 className="text-heading-h1 font-bold">
+        <h1 className="text-heading-h1 font-bold mb:pt-2">
           <Message className="text-primary" value={messages.top} />
           {
             Boolean(sport) && (

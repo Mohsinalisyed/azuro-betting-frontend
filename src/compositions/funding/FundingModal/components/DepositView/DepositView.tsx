@@ -86,7 +86,7 @@ const DepositView: React.FC<DepositViewProps> = (props) => {
           <Icon className="absolute top-full left-full -ml-4 -mt-4 size-6 border-2 border-bg-60 rounded-full" name={constants.chainIcons[appChain.id]} />
         </div>
         <Message
-          className="mt-1.5 text-heading-h2 font-bold"
+          className="mt-1.5 text-heading-h2 mb:text-heading-h5 font-bold"
           tag="h3"
           value={{ ...messages.title, values: { symbol: betToken.symbol, chain: appChain.name } }}
         />

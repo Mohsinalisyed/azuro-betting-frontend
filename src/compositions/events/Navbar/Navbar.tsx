@@ -39,9 +39,9 @@ const Navbar: React.CFC = ({ children }) => {
   return (
     <FilterByTimeProvider>
       <div className={className}>
-        <div className="flex items-center">
+        <div className="flex items-center mb:pt-4">
           <Icon className="size-6 mr-3 text-brand-50" name={icon} />
-          <Message className="text-heading-h2 font-bold" value={messages[sportSlug] || sportSlug} />
+          <Message className="text-heading-h2 mb:text-heading-h5 font-bold" value={messages[sportSlug] || sportSlug} />
         </div>
         <div className="flex items-center space-x-2">
           {

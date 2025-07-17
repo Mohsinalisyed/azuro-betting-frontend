@@ -41,7 +41,7 @@ const WithdrawView: React.FC<WithdrawViewProps> = (props) => {
         alt=""
       />
       <Message
-        className="mt-6 text-center text-heading-h2 font-bold"
+        className="mt-6 text-center text-heading-h2 mb:text-heading-h5 font-bold"
         value={messages.title}
         tag="h3"
       />

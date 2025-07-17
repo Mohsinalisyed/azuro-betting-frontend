@@ -2,11 +2,11 @@
 
 import React from 'react'
 
+import { useKycModal } from 'src/contexts/KycModal/KycModalContext'
 import { GlobalModalsRegistrar } from 'compositions/modals'
 
-import { Content, Footer } from './components'
-import { useKycModal } from 'src/contexts/KycModal/KycModalContext'
 import KycModal from 'compositions/modals/Attestaion/KycModal'
+import { Content, Footer } from './components'
 
 
 const PageLayout: React.CFC = (props) => {
