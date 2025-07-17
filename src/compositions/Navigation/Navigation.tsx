@@ -6,6 +6,7 @@ import { Message } from '@locmod/intl'
 import { useLive, useNavigation } from '@azuro-org/sdk'
 import { type NavigationQuery } from '@azuro-org/toolkit'
 import cx from 'classnames'
+import Link from 'next/link'
 import { constants } from 'helpers'
 
 import { Icon, type IconName } from 'components/ui'
@@ -113,7 +114,9 @@ const Sport: React.FC<SportProps> = (props) => {
             Boolean(isTop || isUnique || !leagues?.length) ? (
               <div className="text-caption-12 min-w-4 text-center">{gamesCount || 0}</div>
             ) : (
-              <Icon className={iconClassName} name="interface/chevron_down" />
+              <Link href="/">
+                <Icon className={iconClassName} name="interface/chevron_down" />
+              </Link>
             )
           }
         </Href>

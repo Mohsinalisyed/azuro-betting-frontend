@@ -61,6 +61,7 @@ export default async function RootLayout({
               {children}
             </PageLayout>
           </KycModalProvider>
+
         </Providers>
       </body>
     </html>
