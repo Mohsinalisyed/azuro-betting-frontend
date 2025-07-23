@@ -1,12 +1,11 @@
 'use client'
 
-import React, { useMemo } from 'react'
+import React, { useMemo, useState, useCallback } from 'react'
 import { useParams } from 'next/navigation'
 import { Message } from '@locmod/intl'
 import { useLive, useNavigation } from '@azuro-org/sdk'
 import { type NavigationQuery } from '@azuro-org/toolkit'
 import cx from 'classnames'
-import Link from 'next/link'
 import { constants } from 'helpers'
 
 import { Icon, type IconName } from 'components/ui'
@@ -14,7 +13,6 @@ import { Href } from 'components/navigation'
 import { Flag } from 'components/dataDisplay'
 
 import Skeleton from './components/Skeleton/Skeleton'
-
 import messages from './messages'
 
 
@@ -43,9 +41,9 @@ const League: React.FC<LeagueProps> = (props) => {
 
   return (
     <Href to={url} className={rootClassName}>
-      <div className="flex items-center overflow-hidden hover:text-primary">
+      <div className="flex items-center overflow-hidden ">
         <Flag className="mr-2 flex-none" country={country.slug} />
-        <div className="text-caption-13 text-ellipsis whitespace-nowrap overflow-hidden">{name}</div>
+        <div className="text-caption-13 text-ellipsis whitespace-nowrap overflow-hidden hover:text-primary">{name}</div>
       </div>
       <div className="bg-grey-10 px-1 py-px ml-2 text-caption-12">{gamesCount}</div>
     </Href>
@@ -69,25 +67,31 @@ const Sport: React.FC<SportProps> = (props) => {
   const { sportSlug } = useParams()
 
   const isTop = slug === '/'
-  const isActive = sportSlug === slug || isTop && !sportSlug
   const isUnique = slug === 'unique'
+  const isActive = sportSlug === slug || (isTop && !sportSlug)
+
+  const [ isOpen, setIsOpen ] = useState(isActive)
+
+  const toggleOpen = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation()
+    e.preventDefault()
+    setIsOpen(prev => !prev)
+  }, [])
 
   const rootClassName = cx('p-px rounded-md overflow-hidden', {
     'bg-card-border-top': isActive,
   })
   const wrapperClassName = cx({ 'bg-bg-l1 rounded-md': isActive })
-  const buttonClassName = cx('group px-4 py-2 flex w-full items-center justify-between hover:text-brand-50', {
-    'text-grey-60': !isActive,
-    'text-brand-50': isActive,
+  const buttonClassName = cx('group px-4 py-2 flex w-full items-center justify-between')
+  const iconClassName = cx('h-4 w-4 transition-transform duration-200', {
+    'rotate-180': isOpen,
   })
-  const iconClassName = cx('h-4 w-4', {
-    'rotate-180': isActive,
-  })
+
   const icon: IconName = isTop || isUnique ? 'interface/top' : `sport/${slug}` as IconName
 
   const leagues = useMemo(() => {
     if (!countries) {
-      return
+      return []
     }
 
     return countries.map(({ leagues, name, slug: countrySlug }) => {
@@ -106,7 +110,14 @@ const Sport: React.FC<SportProps> = (props) => {
     <div className={rootClassName}>
       <div className={wrapperClassName}>
         <Href to={`/${slug}`} className={buttonClassName}>
-          <div className="flex items-center">
+          <div
+            className={
+              cx('flex items-center hover:text-primary', {
+                'text-grey-60': !isActive,
+                'text-brand-50': isActive,
+              })
+            }
+          >
             <Icon className="size-4 mr-2" name={icon} />
             <Message className="text-caption-13" value={name} />
           </div>
@@ -114,15 +125,15 @@ const Sport: React.FC<SportProps> = (props) => {
             Boolean(isTop || isUnique || !leagues?.length) ? (
               <div className="text-caption-12 min-w-4 text-center">{gamesCount || 0}</div>
             ) : (
-              <Link href="/">
+              <button onClick={toggleOpen} className="ml-2 hover:text-primary">
                 <Icon className={iconClassName} name="interface/chevron_down" />
-              </Link>
+              </button>
             )
           }
         </Href>
         {
-          Boolean(!isUnique && isActive && leagues) && (
-            leagues?.map((league) => (
+          Boolean(!isUnique && isOpen && leagues) && (
+            leagues.map((league) => (
               <League key={`${league.country.slug}-${league.slug}`} {...league} />
             ))
           )
@@ -138,9 +149,7 @@ type NavigationProps = {
 
 const Navigation: React.FC<NavigationProps> = ({ className }) => {
   const { isLive } = useLive()
-  const { data: navigation, isFetching } = useNavigation({
-    isLive,
-  })
+  const { data: navigation, isFetching } = useNavigation({ isLive })
 
   const allTopGames = useMemo(() => {
     if (!navigation) {
@@ -150,9 +159,7 @@ const Navigation: React.FC<NavigationProps> = ({ className }) => {
     return navigation.reduce((acc, { activeLiveGamesCount, activePrematchGamesCount }) => {
       const gamesCount = isLive ? activeLiveGamesCount : activePrematchGamesCount
 
-      acc += Math.min(gamesCount, constants.topPageGamePerSportLimit)
-
-      return acc
+      return acc + Math.min(gamesCount, constants.topPageGamePerSportLimit)
     }, 0)
   }, [ navigation, isLive ])
 
@@ -189,52 +196,43 @@ const Navigation: React.FC<NavigationProps> = ({ className }) => {
     })
   }, [ navigation ])
 
-  // Define e-sport slugs based on actual data
   const eSportSlugs = [ 'lol', 'cs2', 'dota-2' ]
+  const eSports = sortedSports.filter(sport => eSportSlugs.includes(sport.slug))
+  const otherSports = sortedSports.filter(sport => !eSportSlugs.includes(sport.slug))
 
   if (isFetching) {
     return <Skeleton className={className} />
   }
 
-  // Separate e-sports and other sports
-  const eSports = sortedSports.filter(sport => eSportSlugs.includes(sport.slug))
-  const otherSports = sortedSports.filter(sport => !eSportSlugs.includes(sport.slug))
-
   return (
     <div className={className}>
       <Message className="text-caption-14 font-semibold py-2 px-4 mb-2" value={messages.title} tag="p" />
       <Sport slug="/" name={messages.top} gamesCount={allTopGames} />
-      {/* Other Sports Box */}
+
       {
         otherSports.length > 0 && (
           <div className="bg-bg-l2 rounded-md p-2 mt-2">
             <Message value="Sports" className="text-caption-13 font-bold mb-2 px-2" />
             {
               otherSports.map(sport => {
-                const { activeLiveGamesCount, activePrematchGamesCount } = sport
-                const gamesCount = isLive ? activeLiveGamesCount : activePrematchGamesCount
+                const gamesCount = isLive ? sport.activeLiveGamesCount : sport.activePrematchGamesCount
 
-                return (
-                  <Sport key={sport.slug} gamesCount={gamesCount} {...sport} />
-                )
+                return <Sport key={sport.slug} gamesCount={gamesCount} {...sport} />
               })
             }
           </div>
         )
       }
-      {/* E-Sports Box */}
+
       {
         eSports.length > 0 && (
           <div className="bg-bg-l2 rounded-md p-2 mt-2">
             <Message value="E-Sports" className="text-caption-13 font-bold mb-2 px-2" />
             {
               eSports.map(sport => {
-                const { activeLiveGamesCount, activePrematchGamesCount } = sport
-                const gamesCount = isLive ? activeLiveGamesCount : activePrematchGamesCount
+                const gamesCount = isLive ? sport.activeLiveGamesCount : sport.activePrematchGamesCount
 
-                return (
-                  <Sport key={sport.slug} gamesCount={gamesCount} {...sport} />
-                )
+                return <Sport key={sport.slug} gamesCount={gamesCount} {...sport} />
               })
             }
           </div>
