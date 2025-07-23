@@ -32,7 +32,7 @@ const KycModal: React.FC<Props> = ({ open, onClose }) => {
   return (
     <Overlay>
       <div className="m-auto z-[99] h-56 w-full wd:max-w-[22.25rem]">
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 z-50 flex items-center justify-center select-none">
           <div className="bg-bg-l0 p-6 rounded-lg shadow-lg text-center max-w-sm w-full relative">
             <button
               onClick={onClose}
