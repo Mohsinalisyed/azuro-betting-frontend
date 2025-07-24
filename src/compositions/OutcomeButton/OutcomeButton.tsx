@@ -27,12 +27,12 @@ const OutcomeButton: React.FC<OutcomeButtonProps> = (props) => {
   const { openModal, kycLoading, kycVerification } = useKycModal()
 
   const handleClick = () => {
-    if (!kycVerification?.isVerified) {
-      openModal()
-    }
-    else {
-      originalOnClick()
-    }
+    // if (!kycVerification?.isVerified) {
+    //   openModal()
+    // }
+    // else {
+    originalOnClick()
+    // }
   }
 
   const buttonClassName = cx(

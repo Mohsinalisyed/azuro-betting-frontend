@@ -29,7 +29,7 @@ const HeadMarket: React.FC<HeadMarketProps> = ({ market, game, conditionIndex, c
   const headMarket: TMarket = {
     ...market,
     conditions: isOpen ? conditions : [
-      conditions[conditionIndex].outcomes.length > 3 ? ({
+      conditions[conditionIndex]?.outcomes?.length > 3 ? ({
         ...conditions[conditionIndex],
         outcomes: conditions[conditionIndex].outcomes.slice(0, 2),
       }) : (
